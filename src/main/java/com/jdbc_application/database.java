@@ -1,5 +1,7 @@
 package com.jdbc_application;
 
+import org.checkerframework.checker.confidential.qual.NonConfidential;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -85,7 +87,7 @@ public class database {
             } else {
                 // if username and password is found in the database,
                 // put details in the session till user logs out.
-                String method = response.getHeader("method");
+                @NonConfidential String method = response.getHeader("method");
                 System.out.println("Login: " + method);
                 if (method == "session") {
                     HttpSession session = request.getSession();

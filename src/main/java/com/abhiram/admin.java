@@ -1,5 +1,7 @@
 package com.abhiram;
 
+import org.checkerframework.checker.confidential.qual.NonConfidential;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -41,7 +43,12 @@ public class admin extends HttpServlet {
             out.println("<h2> Welcome Admin "+user+"</h2>");
         }
         catch(Exception e){
-            System.out.println(e);
+            String errorMessage = e.getMessage();
+            if (!checkConfidential(errorMessage)) {
+                @SuppressWarnings("confidential")
+                @NonConfidential String nonConfMessage = errorMessage;
+                System.out.println(nonConfMessage);
+            }
         }
         finally{
             out.close();
@@ -57,5 +64,11 @@ public class admin extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
+    }
+
+    private boolean checkConfidential(String s) {
+        // arbitrary processing of message
+        boolean confidential = true;
+        return confidential;
     }
 }

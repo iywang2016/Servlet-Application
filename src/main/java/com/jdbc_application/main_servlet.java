@@ -1,5 +1,7 @@
 package com.jdbc_application;
 
+import org.checkerframework.checker.confidential.qual.NonConfidential;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -84,7 +86,7 @@ public class main_servlet extends HttpServlet {
                 }
             } else if (conditional.contentEquals("Logout")) {
                 HttpSession session = request.getSession(false);
-                String user = (String) session.getAttribute("Username");
+                @NonConfidential String user = (String) session.getAttribute("Username");
                 // check in session storage
                 if (user != null) {
                     session.removeAttribute("Username");

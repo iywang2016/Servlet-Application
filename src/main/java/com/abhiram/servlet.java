@@ -1,5 +1,7 @@
 package com.abhiram;
 
+import org.checkerframework.checker.confidential.qual.NonConfidential;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -48,7 +50,8 @@ public class servlet extends HttpServlet {
                 URL does not changes.
                 Also, another very important difference is that, sendRedirect() works on response object 
                 while request dispatch work on request object. */
-                String user=request.getParameter("user");
+                @SuppressWarnings("confidential")
+                @NonConfidential String user=request.getParameter("user");
                 // we have to explicitly pass the parameters to sendRedirect method
                 response.sendRedirect("./admin_api?user="+user);
             }
@@ -66,7 +69,12 @@ public class servlet extends HttpServlet {
             }
         }
         catch(Exception e){
-            System.out.println(e);
+            String errorMessage = e.getMessage();
+            if (!checkConfidential(errorMessage)) {
+                @SuppressWarnings("confidential")
+                @NonConfidential String nonConfMessage = errorMessage;
+                System.out.println(nonConfMessage);
+            }
         }
         finally{
             out.close();
@@ -76,5 +84,11 @@ public class servlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
+    }
+
+    private boolean checkConfidential(String s) {
+        // arbitrary processing of message
+        boolean confidential = true;
+        return confidential;
     }
 }
