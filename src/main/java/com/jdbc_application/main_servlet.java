@@ -86,7 +86,7 @@ public class main_servlet extends HttpServlet {
                 }
             } else if (conditional.contentEquals("Logout")) {
                 HttpSession session = request.getSession(false);
-                @SuppressWarnings("confidential")
+                @SuppressWarnings("confidential") // wrapper operation
                 @NonConfidential String user = (@NonConfidential String) session.getAttribute("Username");
                 // check in session storage
                 if (user != null) {
@@ -99,13 +99,13 @@ public class main_servlet extends HttpServlet {
                     Cookie[] cookies = request.getCookies();
                     if (cookies != null) {
                         for (Cookie cookie : cookies) {
-                            @SuppressWarnings("confidential")
+                            @SuppressWarnings("confidential") // wrapper operation
                             @NonConfidential String userName = cookie.getName();
                             user = userName;
                             if (user.equals("Username")) {
                                 cookie.setMaxAge(0);
                                 response.addCookie(cookie);
-                                @SuppressWarnings("confidential")
+                                @SuppressWarnings("confidential") // true positive
                                 @NonConfidential String value = cookie.getValue();
                                 user = value;
                                 break;

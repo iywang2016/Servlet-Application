@@ -45,7 +45,7 @@ public class admin extends HttpServlet {
         catch(Exception e){
             String errorMessage = e.getMessage();
             if (!checkConfidential(errorMessage)) {
-                @SuppressWarnings("confidential")
+                @SuppressWarnings("confidential") // true positive
                 @NonConfidential String nonConfMessage = errorMessage;
                 System.out.println(nonConfMessage);
             }
