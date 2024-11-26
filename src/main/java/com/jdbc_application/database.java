@@ -87,7 +87,6 @@ public class database {
             } else {
                 // if username and password is found in the database,
                 // put details in the session till user logs out.
-                @SuppressWarnings("confidential") // wrapper operation
                 @NonConfidential String method = response.getHeader("method");
                 System.out.println("Login: " + method);
                 if (method == "session") {

@@ -50,7 +50,6 @@ public class servlet extends HttpServlet {
                 URL does not changes.
                 Also, another very important difference is that, sendRedirect() works on response object 
                 while request dispatch work on request object. */
-                @SuppressWarnings("confidential") // wrapper operation
                 @NonConfidential String user=request.getParameter("user");
                 // we have to explicitly pass the parameters to sendRedirect method
                 response.sendRedirect("./admin_api?user="+user);

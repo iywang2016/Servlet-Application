@@ -86,8 +86,7 @@ public class main_servlet extends HttpServlet {
                 }
             } else if (conditional.contentEquals("Logout")) {
                 HttpSession session = request.getSession(false);
-                @SuppressWarnings("confidential") // wrapper operation
-                @NonConfidential String user = (@NonConfidential String) session.getAttribute("Username");
+                @NonConfidential String user = (String) session.getAttribute("Username");
                 // check in session storage
                 if (user != null) {
                     session.removeAttribute("Username");
@@ -99,7 +98,6 @@ public class main_servlet extends HttpServlet {
                     Cookie[] cookies = request.getCookies();
                     if (cookies != null) {
                         for (Cookie cookie : cookies) {
-                            @SuppressWarnings("confidential") // wrapper operation
                             @NonConfidential String userName = cookie.getName();
                             user = userName;
                             if (user.equals("Username")) {
@@ -128,7 +126,7 @@ public class main_servlet extends HttpServlet {
         } catch (Exception e) {
             RequestDispatcher rd = request.getRequestDispatcher("index.html");
             rd.include(request, response);
-            out.println("<h3>Entered in wrong format, exception occured!" + "<br>Error!" + e + "</h3>");
+            out.println("<h3>Entered in wrong format, exception occured!" + "<br>Error!" + e.getMessage() + "</h3>");
         } finally {
             out.println("</body>");
             out.close();
