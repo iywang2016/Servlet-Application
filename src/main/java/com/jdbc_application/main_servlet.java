@@ -38,7 +38,7 @@ public class main_servlet extends HttpServlet {
                 } catch (Exception e) {
                     RequestDispatcher rd = request.getRequestDispatcher("data_insertion.jsp");
                     rd.include(request, response);
-                    out.println("<h3>Entered in wrong format, exception occured!" + "<br>Error!" + e + "</h3>");
+                    out.println("<h3>Entered in wrong format, exception occured!" + "<br>Error!" + e.getMessage() + "</h3>");
                 }
             } else if (conditional.contentEquals("Login Using HttpSession")) {
                 response.setHeader("method", "session");
@@ -47,7 +47,7 @@ public class main_servlet extends HttpServlet {
                 } catch (Exception e) {
                     RequestDispatcher rd = request.getRequestDispatcher("data_search.jsp");
                     rd.include(request, response);
-                    out.println("<h3>Entered in wrong format, exception occured!" + "<br>Error!" + e + "</h3>");
+                    out.println("<h3>Entered in wrong format, exception occured!" + "<br>Error!" + e.getMessage() + "</h3>");
                 }
             } else if (conditional.contentEquals("Login Using Cookies")) {
                 response.setHeader("method", "cookie");
@@ -56,7 +56,7 @@ public class main_servlet extends HttpServlet {
                 } catch (Exception e) {
                     RequestDispatcher rd = request.getRequestDispatcher("data_search.jsp");
                     rd.include(request, response);
-                    out.println("<h3>Entered in wrong format, exception occured!" + "<br>Error!" + e + "</h3>");
+                    out.println("<h3>Entered in wrong format, exception occured!" + "<br>Error!" + e.getMessage() + "</h3>");
                 }
             } else if (conditional.contentEquals("Update password")) {
                 try {
@@ -78,11 +78,11 @@ public class main_servlet extends HttpServlet {
                 } catch (SQLException e) {
                     RequestDispatcher rd = request.getRequestDispatcher("data_search.jsp");
                     rd.include(request, response);
-                    out.println("<h3>" + e + "</h3>");
+                    out.println("<h3>" + e.getMessage() + "</h3>");
                 } catch (Exception e) {
                     RequestDispatcher rd = request.getRequestDispatcher("data_search.jsp");
                     rd.include(request, response);
-                    out.println("<h3>" + "<br>Error!" + e + "</h3>");
+                    out.println("<h3>" + "<br>Error!" + e.getMessage() + "</h3>");
                 }
             } else if (conditional.contentEquals("Logout")) {
                 HttpSession session = request.getSession(false);
@@ -120,7 +120,7 @@ public class main_servlet extends HttpServlet {
                 } catch (Exception e) {
                     RequestDispatcher rd = request.getRequestDispatcher("view.jsp");
                     rd.include(request, response);
-                    out.println("<h3>Query completed!" + "<br>" + e + "</h3>");
+                    out.println("<h3>Query completed!" + "<br>" + e.getMessage() + "</h3>");
                 }
             }
         } catch (Exception e) {
