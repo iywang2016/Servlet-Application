@@ -1,5 +1,6 @@
 package com.jdbc_application;
 
+import org.checkerframework.checker.confidential.qual.Confidential;
 import org.checkerframework.checker.confidential.qual.NonConfidential;
 
 import java.io.IOException;
