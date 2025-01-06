@@ -1,6 +1,7 @@
 package com.abhiram;
 
 import org.checkerframework.checker.confidential.qual.NonConfidential;
+import org.checkerframework.framework.qual.AnnotatedFor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@AnnotatedFor("confidential")
 public class admin extends HttpServlet {
     
     private static final long serialVersionUID = 2595124483992980425L;

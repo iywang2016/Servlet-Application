@@ -1,6 +1,7 @@
 package com.jdbc_application;
 
 import org.checkerframework.checker.confidential.qual.NonConfidential;
+import org.checkerframework.framework.qual.AnnotatedFor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+@AnnotatedFor("confidential")
 public class database {
     String password = "abhiram*68*";
 
