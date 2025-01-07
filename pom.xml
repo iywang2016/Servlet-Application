@@ -112,6 +112,7 @@
                 <annotationProcessor>org.checkerframework.checker.confidential.ConfidentialChecker</annotationProcessor>
               </annotationProcessors>
               <compilerArgs>
+                <arg>-AprintAllQualifiers</arg>
                 <arg>-Xmaxerrs</arg>
                 <arg>10000</arg>
                 <arg>-Xmaxwarns</arg>
