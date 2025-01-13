@@ -1,6 +1,7 @@
 package com.abhiram;
 
 import org.checkerframework.checker.confidential.qual.NonConfidential;
+import org.checkerframework.checker.confidential.qual.UnknownConfidential;
 import org.checkerframework.framework.qual.AnnotatedFor;
 
 import java.io.IOException;
@@ -68,7 +69,7 @@ public class admin extends HttpServlet {
         processRequest(request, response);
     }
 
-    private boolean checkConfidential(String s) {
+    private boolean checkConfidential(@UnknownConfidential String s) {
         // arbitrary processing of message
         boolean confidential = true;
         return confidential;
